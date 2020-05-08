@@ -5,7 +5,7 @@ declare LOG_FILE=`dirname $0`/sub-downloader.log
 declare WANTED_FILE=`dirname $0`/wanted/subs.wanted
 declare OPTIONS='--opensubtitles USERNAME PASSWORD'
 
-# Sonarr does not show the stdout as part of the log information displayed by the system,
+# Radarr does not show the stdout as part of the log information displayed by the system,
 # So I decided to store the log information by my own.
 function doLog {
     echo -e $1
@@ -16,16 +16,16 @@ declare LANGUAGES="en fr"
 
 doLog "###### Process started at: $(date) ######"
 
-declare EPISODE_PATH=${sonarr_episodefile_path}
-declare EVENT=${sonarr_eventtype}
+declare EPISODE_PATH=${radarr_movie_path}
+declare EVENT=${radarr_eventtype}
 
 if [ $EVENT == "Test" ]; then
-    doLog "Test from sonarr"
+    doLog "Test from radarr"
     exit 0
 fi
 
 if [[ -z $EPISODE_PATH ]]; then
-    doLog "sonarr_episodefile_path environment variable not found"
+    doLog "radarr_movie_path environment variable not found"
     exit 1
 fi
 
